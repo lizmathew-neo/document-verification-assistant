@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 600" width="420" height="600" font-family="Courier New, monospace">
+  <defs>
+    <filter id="blur" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur stdDeviation="2.6"/>
+    </filter>
+  </defs>
+  <rect width="420" height="600" fill="#f4f1ea"/>
+  <g filter="url(#blur)" fill="#2a2a2a">
+    <text x="210" y="60" text-anchor="middle" font-size="22" font-weight="bold">PAYMENT RECEIPT</text>
+    <text x="210" y="88" text-anchor="middle" font-size="13">Utopia Licensing Office</text>
+    <text x="30" y="150" font-size="15">Receipt no:   R-55-80913</text>
+    <text x="30" y="180" font-size="15">Date:         14 Nov 2026</text>
+    <text x="30" y="210" font-size="15">Payer:        JANE SAMPLE</text>
+    <text x="30" y="260" font-size="15">Application fee .... 120.00</text>
+    <text x="30" y="290" font-size="15">Processing fee  ....  15.00</text>
+    <text x="30" y="340" font-size="18" font-weight="bold">TOTAL  UTD 135.00</text>
+    <text x="30" y="400" font-size="15">Method:       Bank transfer</text>
+    <text x="30" y="430" font-size="15">Reference:    APP-2026-7741</text>
+    <text x="210" y="520" text-anchor="middle" font-size="14">Thank you</text>
+  </g>
+  <text x="210" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#c0392b" fill-opacity="0.16" transform="rotate(-30 210 320)">SPECIMEN</text>
+</svg>

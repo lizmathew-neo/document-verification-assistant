@@ -1,5 +1,7 @@
 # Document Verification Assistant
 
+**▶ [Try the live demo](https://lizmathew-neo.github.io/document-verification-assistant/).** Switch between Off, Hint and Full modes and analyse six specimen documents. The demo runs entirely in your browser: results are pre-computed, nothing is uploaded and no AI is called.
+
 An AI assistant that helps human reviewers check uploaded documents: passports, ID cards, photos, medical certificates, professional certificates, payment proofs and application forms. It sends the document image to a vision model on **AWS Bedrock**. It returns:
 
 - a confidence score
@@ -50,6 +52,7 @@ Design points:
 |---|---|
 | `backend/` | Spring Boot 3 / Java 21 service: the Bedrock analysis engine, Off/Hint/Full filtering and the REST API |
 | `frontend/` | A React `AiAssistPanel` component, an `AiTrafficDot` indicator and TypeScript types for the API |
+| `frontend/demo/` | The interactive demo published to GitHub Pages: fictional specimen documents with pre-computed results. Run it locally with `npm run demo`. |
 
 ## Quick start
 

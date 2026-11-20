@@ -172,7 +172,7 @@ const AiAssistPanel: React.FC<Props> = ({
 
               {(analysis.fieldComparisons?.length ?? 0) > 0 && (
                 <>
-                  <div style={subHead}>Profile vs document</div>
+                  <div style={subHead}>Record vs document</div>
                   <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.72rem' }}>
                     <thead>
                       <tr style={{ color: 'var(--dva-muted, #6b7280)', textAlign: 'left' }}>

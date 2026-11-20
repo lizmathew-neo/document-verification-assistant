@@ -13,7 +13,7 @@
 
     <groupId>io.github.lizmathew-neo</groupId>
     <artifactId>document-verification-assistant</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <name>document-verification-assistant</name>
     <description>AI-assisted document verification (AWS Bedrock vision models) with Off / Hint / Full assistance modes</description>
 

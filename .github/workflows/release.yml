@@ -1,0 +1,58 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Check the tag matches the pom version
+        working-directory: backend
+        run: |
+          POM_VERSION=$(mvn -q -ntp help:evaluate -Dexpression=project.version -DforceStdout)
+          if [ "v${POM_VERSION}" != "${GITHUB_REF_NAME}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match pom version ${POM_VERSION}" >&2
+            exit 1
+          fi
+
+      - name: Test and package
+        working-directory: backend
+        run: mvn -B -ntp package
+
+      - name: Collect artifacts
+        run: |
+          mkdir dist
+          cp backend/target/document-verification-assistant-*.jar dist/
+          (cd dist && sha256sum *.jar > SHA256SUMS.txt)
+
+      - name: Extract release notes
+        run: |
+          awk -v tag="## ${GITHUB_REF_NAME}" '
+            $0 == tag { found = 1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md > release-notes.md
+          test -s release-notes.md || echo "Release ${GITHUB_REF_NAME}" > release-notes.md
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" dist/* \
+            --title "${GITHUB_REF_NAME}" \
+            --notes-file release-notes.md \
+            --verify-tag
